@@ -16,7 +16,7 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/krish-trambadiya-bb3064281/" target="_blank" rel="noreferrer" style={linkStyle}>LINKEDIN</a>
           <a href="https://github.com/krish-patel-33" target="_blank" rel="noreferrer" style={linkStyle}>GITHUB</a>
           <a href="mailto:krishpatel3300@gmail.com" style={linkStyle}>EMAIL</a>
-          <a href="https://drive.google.com/file/d/1QOdfGFA8hKthvfEJ4I8temu1QupWdPKR/view?usp=sharing" target="_blank" rel="noreferrer" style={linkStyle}>RESUME</a>
+          <a href="/Resume_Krish_Trambadiya.pdf" download target="_blank" rel="noreferrer" style={linkStyle}>RESUME</a>
         </div>
 
         {/* Branding */}

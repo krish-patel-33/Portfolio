@@ -14,7 +14,7 @@ const Navigation = () => {
         <a href="#tech" style={linkStyle}>TECH STACK</a>
         <a href="#experience" style={linkStyle}>EXPERIENCE</a>
         <a href="#contact" style={linkStyle}>LET'S CONNECT</a>
-        <a href="https://drive.google.com/file/d/1QOdfGFA8hKthvfEJ4I8temu1QupWdPKR/view?usp=sharing" target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
+        <a href="/Resume_Krish_Trambadiya.pdf" download target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
       </div>
     </nav>
   );

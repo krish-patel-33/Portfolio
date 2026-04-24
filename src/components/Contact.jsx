@@ -203,7 +203,7 @@ const Contact = () => {
             <a href="https://linkedin.com/in/krish-trambadiya-bb3064281" target="_blank" rel="noreferrer" className="social-icon-btn"><Linkedin size={20} /></a>
             <a href="https://github.com/krish-patel-33" target="_blank" rel="noreferrer" className="social-icon-btn"><Github size={20} /></a>
             <a href="mailto:krishpatel3300@gmail.com" className="social-icon-btn"><Mail size={20} /></a>
-            <a href="https://drive.google.com/file/d/1QOdfGFA8hKthvfEJ4I8temu1QupWdPKR/view?usp=sharing" target="_blank" rel="noreferrer" className="social-icon-btn"><FileDown size={20} /></a>
+            <a href="/Resume_Krish_Trambadiya.pdf" download target="_blank" rel="noreferrer" className="social-icon-btn"><FileDown size={20} /></a>
           </div>
 
         </motion.div>
