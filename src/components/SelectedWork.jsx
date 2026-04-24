@@ -12,8 +12,7 @@ const SelectedWork = () => {
           {/* Project 1 */}
           <div style={projectCardStyle} className="project-card">
             <div style={imageWrapperStyle}>
-              <div style={placeholderImageStyle}></div>
-              {/* <img src="/images/virtue_view.png" alt="Virtue_View" style={imageStyle} /> */}
+              <img src="/virtue_view_portfolio.png" alt="Virtue_View" style={imageStyle} />
             </div>
             
             <div style={projectContentStyle}>
@@ -32,8 +31,7 @@ const SelectedWork = () => {
           {/* Project 2 */}
           <div style={{...projectCardStyle, marginTop: '80px'}} className="project-card">
             <div style={imageWrapperStyle}>
-              <div style={placeholderImageStyle}></div>
-              {/* <img src="/images/welthos.png" alt="Welthos" style={imageStyle} /> */}
+              <img src="/welthos_portfolio.png" alt="Welthos" style={imageStyle} />
             </div>
             
             <div style={projectContentStyle}>
@@ -110,8 +108,6 @@ const imageStyle = {
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  filter: 'grayscale(100%)',
-  transition: 'filter 0.4s',
 };
 
 const projectContentStyle = {
@@ -154,9 +150,6 @@ const css = `
   .project-card:hover {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.03);
-  }
-  .project-card:hover img {
-    filter: grayscale(0%);
   }
 `;
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
