@@ -7,7 +7,10 @@ const Navigation = () => {
         <div style={badgeStyle}>
           <span style={dotStyle}></span> SYSTEM ONLINE
         </div>
-        <h1 style={brandStyle}>KRISH TRAMBADIYA</h1>
+        <h1 style={brandStyle}>
+          <span style={{ color: '#E84C1E', marginRight: '8px' }}>●</span>
+          KRISH TRAMBADIYA
+        </h1>
       </div>
       <div style={linksContainerStyle}>
         <a href="#work" style={linkStyle}>WORK</a>
@@ -58,9 +61,11 @@ const dotStyle = {
 };
 
 const brandStyle = {
-  fontSize: '1.2rem',
-  fontWeight: 800,
-  letterSpacing: '1px',
+  fontSize: '1.3rem',
+  fontWeight: 600,
+  letterSpacing: '0.15em',
+  color: '#FFFFFF',
+  textShadow: '0 0 20px rgba(0,0,0,0.8)',
 };
 
 const linksContainerStyle = {

@@ -44,11 +44,7 @@ const Scene3D = ({ tilt, scrolled }) => {
         COMPILE STATUS: OK
       </div>
 
-      {/* Top right stat */}
-      <div style={{...statWidgetStyle, opacity: loaded ? 1 : 0}}>
-        <div style={statNumberStyle}>2+</div>
-        <div style={statLabelStyle}>PROJECTS</div>
-      </div>
+
     </div>
   );
 };
@@ -127,24 +123,83 @@ const statWidgetStyle = {
   top: '120px',
   right: '40px',
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-end',
+  alignItems: 'center',
+  gap: '16px',
+  background: 'rgba(20, 20, 20, 0.9)',
+  border: '1px solid var(--accent-orange)',
+  padding: '16px 20px',
+  borderRadius: '8px',
+  boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+  backdropFilter: 'blur(10px)',
   transition: 'opacity 0.8s 0.5s',
   zIndex: 10,
 };
 
+const reactWrapStyle = {
+  width: '46px',
+  height: '46px',
+  borderRadius: '50%',
+  border: '1px solid var(--accent-orange)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+const reactLogoContainerStyle = {
+  width: '32px',
+  height: '32px',
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  animation: 'spin 8s linear infinite',
+};
+
+const reactCoreStyle = {
+  width: '6px',
+  height: '6px',
+  backgroundColor: '#61DAFB',
+  borderRadius: '50%',
+  boxShadow: '0 0 8px #61DAFB',
+};
+
+const reactEllipseStyle = {
+  position: 'absolute',
+  width: '100%',
+  height: '35%',
+  border: '1px solid #61DAFB',
+  borderRadius: '50%',
+  boxShadow: 'inset 0 0 5px rgba(97,218,251,0.2), 0 0 5px rgba(97,218,251,0.2)',
+};
+
 const statNumberStyle = {
-  fontSize: '3rem',
+  fontSize: '2rem',
   fontWeight: 900,
-  color: 'var(--accent-orange)',
+  color: 'var(--text-light)',
   lineHeight: '1',
+  letterSpacing: '1px',
 };
 
 const statLabelStyle = {
-  fontSize: '0.8rem',
-  color: 'var(--text-light)',
+  fontSize: '0.7rem',
+  color: 'var(--text-muted)',
   letterSpacing: '2px',
-  fontWeight: 600,
+  fontWeight: 700,
+  marginTop: '4px'
 };
+
+const styles = `
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+// Inject keyframes safely
+if (typeof document !== 'undefined' && !document.getElementById('scene-animations')) {
+  const styleTag = document.createElement('style');
+  styleTag.id = 'scene-animations';
+  styleTag.textContent = styles;
+  document.head.appendChild(styleTag);
+}
 
 export default Scene3D;

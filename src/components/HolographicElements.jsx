@@ -3,43 +3,43 @@ import React from 'react';
 const HolographicElements = ({ tilt }) => {
   return (
     <>
-      {/* React Logo - Top Right */}
-      <div style={{ ...itemStyle, top: '-50px', right: '-80px', transform: 'translateZ(100px)' }}>
-        <div style={reactLogoContainerStyle}>
-          <div style={reactCoreStyle}></div>
-          <div style={{ ...reactEllipseStyle, transform: 'rotate(0deg)' }}></div>
-          <div style={{ ...reactEllipseStyle, transform: 'rotate(60deg)' }}></div>
-          <div style={{ ...reactEllipseStyle, transform: 'rotate(120deg)' }}></div>
-        </div>
-      </div>
-
-      {/* Node.js Terminal - Mid Right */}
-      <div style={{ ...itemStyle, top: '150px', right: '-120px', transform: 'translateZ(50px)', animationDelay: '0.5s' }}>
-        <div style={nodeTerminalStyle}>
-          <div style={nodeTerminalHeaderStyle}>node server.js</div>
-          <div style={nodeTerminalContentStyle}>
-            &gt; Server running on port 5000<br/>
-            &gt; MongoDB Connected...<br/>
-            <span className="blink-terminal">_</span>
+      {/* 1. JWT Token - Top Center (Furthest Back) */}
+      <div style={{ ...itemStyle, top: '-30px', left: '50%', transform: 'translateZ(-50px) translateX(-50%)', opacity: 0.6, animationDelay: '1.5s', zIndex: -1 }}>
+        <div style={jwtTokenWrapper}>
+          <div style={jwtLabelStyle}>JWT BEARER TOKEN</div>
+          <div style={jwtTokenStyle}>
+            eyJhbGciOiJIUzI1NiJ9.<br/>
+            eyJ1c2VySWQiOiI2MGQ1.<br/>
+            SflKxwRJSMeKKF2QT4fw...
           </div>
         </div>
       </div>
 
-      {/* MongoDB Document - Bottom Center */}
-      <div style={{ ...itemStyle, bottom: '-80px', left: '100px', transform: 'translateZ(150px)', animationDelay: '1s' }}>
-        <div style={mongoCardStyle}>
-          <span style={{color: '#E06C75'}}>&#123;</span><br/>
-          &nbsp;&nbsp;<span style={{color: '#98C379'}}>"_id"</span>: <span style={{color: '#D19A66'}}>"60d5ecb..."</span>,<br/>
-          &nbsp;&nbsp;<span style={{color: '#98C379'}}>"name"</span>: <span style={{color: '#98C379'}}>"Krish"</span>,<br/>
-          &nbsp;&nbsp;<span style={{color: '#98C379'}}>"stack"</span>: [<span style={{color: '#98C379'}}>"MERN"</span>]<br/>
-          <span style={{color: '#E06C75'}}>&#125;</span>
+      {/* 2. Node.js Terminal - Mid Right (Slightly in front) */}
+      <div style={{ ...itemStyle, top: '100px', right: '-160px', transform: 'translateZ(60px)', animationDelay: '0.5s' }}>
+        <div style={nodeTerminalStyle}>
+          <div style={nodeTerminalHeaderStyle}>bash - node server.js</div>
+          <div style={nodeTerminalContentStyle}>
+            <span style={{color: '#5C6370'}}>[nodemon] server restarting...</span><br/>
+            <span style={{color: '#98C379'}}>✓</span> <span style={{color: '#ABB2BF'}}>Express running on port 5000</span><br/>
+            <span style={{color: '#98C379'}}>✓</span> <span style={{color: '#ABB2BF'}}>MongoDB Connected: cluster0</span><br/>
+            <span style={{color: '#98C379'}}>✓</span> <span style={{color: '#ABB2BF'}}>JWT middleware loaded</span><br/>
+            <span style={{color: '#ABB2BF'}}>&gt; waiting for requests...</span>
+            <span className="blink-terminal" style={{color: '#ABB2BF'}}>_</span>
+          </div>
         </div>
       </div>
 
-      {/* JWT Token - Mid Left */}
-      <div style={{ ...itemStyle, top: '100px', left: '-150px', transform: 'translateZ(80px)', animationDelay: '1.5s', opacity: 0.6 }}>
-        <div style={jwtTokenStyle}>
-          eyJhbGciOiJIUzI1NiIsInR5c...
+      {/* 3. MongoDB Document - Bottom Left (Most Forward) */}
+      <div style={{ ...itemStyle, bottom: '-50px', left: '-50px', transform: 'translateZ(150px)', animationDelay: '1s' }}>
+        <div style={mongoCardStyle}>
+          <span style={{color: '#ABB2BF'}}>&#123;</span><br/>
+          &nbsp;&nbsp;<span style={{color: '#61AFEF'}}>"_id"</span>: <span style={{color: '#98C379'}}>"60d5ecb..."</span>,<br/>
+          &nbsp;&nbsp;<span style={{color: '#61AFEF'}}>"user"</span>: <span style={{color: '#98C379'}}>"Krish"</span>,<br/>
+          &nbsp;&nbsp;<span style={{color: '#61AFEF'}}>"role"</span>: <span style={{color: '#98C379'}}>"admin"</span>,<br/>
+          &nbsp;&nbsp;<span style={{color: '#61AFEF'}}>"stack"</span>: [<span style={{color: '#98C379'}}>"MERN"</span>],<br/>
+          &nbsp;&nbsp;<span style={{color: '#61AFEF'}}>"verified"</span>: <span style={{color: '#D19A66'}}>true</span><br/>
+          <span style={{color: '#ABB2BF'}}>&#125;</span>
         </div>
       </div>
     </>
@@ -52,97 +52,92 @@ const itemStyle = {
   filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))',
 };
 
-// React Logo Styles
-const reactLogoContainerStyle = {
-  width: '80px',
-  height: '80px',
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  animation: 'spin 15s linear infinite',
-};
-
-const reactCoreStyle = {
-  width: '16px',
-  height: '16px',
-  backgroundColor: '#61DAFB',
-  borderRadius: '50%',
-  boxShadow: '0 0 15px #61DAFB',
-};
-
-const reactEllipseStyle = {
-  position: 'absolute',
-  width: '100%',
-  height: '35%',
-  border: '2px solid #61DAFB',
-  borderRadius: '50%',
-  boxShadow: 'inset 0 0 10px rgba(97,218,251,0.2), 0 0 10px rgba(97,218,251,0.2)',
-};
-
 // Node Terminal Styles
 const nodeTerminalStyle = {
-  background: 'rgba(20, 20, 20, 0.8)',
+  background: 'rgba(20, 20, 20, 0.95)',
   border: '1px solid #333',
-  borderRadius: '4px',
-  width: '180px',
+  borderRadius: '6px',
+  width: '240px',
   overflow: 'hidden',
-  backdropFilter: 'blur(5px)',
+  backdropFilter: 'blur(8px)',
+  boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
 };
 
 const nodeTerminalHeaderStyle = {
   background: '#333',
-  padding: '4px 8px',
-  fontSize: '0.6rem',
-  color: '#aaa',
+  padding: '6px 10px',
+  fontSize: '0.65rem',
+  color: '#ABB2BF',
   fontFamily: 'monospace',
 };
 
 const nodeTerminalContentStyle = {
-  padding: '8px',
-  color: '#22c55e',
-  fontFamily: 'monospace',
+  padding: '10px',
+  fontFamily: "'Fira Code', 'Consolas', monospace",
   fontSize: '0.65rem',
-  lineHeight: '1.4',
+  lineHeight: '1.5',
 };
 
 // Mongo Card Styles
 const mongoCardStyle = {
-  background: 'rgba(30, 30, 30, 0.9)',
-  border: '1px solid rgba(80, 200, 120, 0.3)',
+  background: '#1E1E1E', // VS code dark
+  border: '1px solid rgba(255, 255, 255, 0.1)',
   borderRadius: '8px',
-  padding: '12px',
-  fontFamily: 'monospace',
+  padding: '16px',
+  fontFamily: "'Fira Code', 'Consolas', monospace",
   fontSize: '0.75rem',
-  boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+  boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
   backdropFilter: 'blur(10px)',
+  lineHeight: '1.4'
 };
 
 // JWT Token
+const jwtTokenWrapper = {
+  background: 'rgba(20, 20, 20, 0.6)',
+  border: '1px solid rgba(232, 76, 30, 0.2)',
+  borderRadius: '6px',
+  padding: '12px',
+  backdropFilter: 'blur(4px)',
+};
+
+const jwtLabelStyle = {
+  fontSize: '0.6rem',
+  color: '#E84C1E', // Orange
+  fontWeight: 700,
+  letterSpacing: '1px',
+  marginBottom: '6px',
+  textTransform: 'uppercase',
+  textAlign: 'center'
+};
+
 const jwtTokenStyle = {
-  fontFamily: 'monospace',
-  color: '#A09E9C',
-  fontSize: '0.8rem',
+  fontFamily: "'Fira Code', 'Consolas', monospace",
+  color: '#ABB2BF',
+  fontSize: '0.75rem',
   letterSpacing: '1px',
   wordBreak: 'break-all',
-  width: '100px',
-  lineHeight: '1.2',
-  textShadow: '0 0 5px rgba(255,255,255,0.2)',
+  width: '130px',
+  lineHeight: '1.3',
+  opacity: 0.8,
+  textAlign: 'center'
 };
 
 const styles = `
   @keyframes float-antigravity {
-    0% { transform: translateY(0) translateZ(inherit); }
-    100% { transform: translateY(-20px) translateZ(inherit); }
-  }
-  @keyframes spin {
-    100% { transform: rotate(360deg); }
+    0% { transform: translateY(0) translateZ(inherit) translateX(inherit); }
+    100% { transform: translateY(-20px) translateZ(inherit) translateX(inherit); }
   }
   .blink-terminal {
     animation: blink 1s step-end infinite;
   }
 `;
 
-document.head.insertAdjacentHTML('beforeend', `<style>${styles}</style>`);
+// Inject keyframes strictly if not present to avoid duplication leaks
+if (typeof document !== 'undefined' && !document.getElementById('holo-animations-new')) {
+  const styleTag = document.createElement('style');
+  styleTag.id = 'holo-animations-new';
+  styleTag.textContent = styles;
+  document.head.appendChild(styleTag);
+}
 
 export default HolographicElements;
