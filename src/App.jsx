@@ -5,6 +5,7 @@ import CursorManager from './components/CursorManager';
 import Metrics from './components/Metrics';
 import Experience from './components/Experience';
 import SelectedWork from './components/SelectedWork';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Metrics />
           <Experience />
           <SelectedWork />
+          <Contact />
           <Footer />
         </div>
       </main>
