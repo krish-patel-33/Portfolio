@@ -1,21 +1,29 @@
 import React from 'react';
 
 const Navigation = () => {
+  const handleNavClick = (event, targetId) => {
+    event.preventDefault();
+    const section = document.getElementById(targetId);
+    if (!section) return;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.replaceState(null, '', `#${targetId}`);
+  };
+
   return (
     <nav style={navStyle}>
       <div style={brandContainerStyle}>
         <div style={badgeStyle}>
           <span style={dotStyle}></span> SYSTEM ONLINE
         </div>
-        <h1 style={brandStyle}>
+        {/* <h1 style={brandStyle}>
           <span style={{ color: '#E84C1E', marginRight: '8px' }}>●</span>
           KRISH TRAMBADIYA
-        </h1>
+        </h1> */}
       </div>
       <div style={linksContainerStyle}>
-        <a href="#experience" className="nav-link" style={linkStyle}>EXPERIENCE</a>
-        <a href="#metrics" className="nav-link" style={linkStyle}>TECH STACK</a>
-        <a href="#work" className="nav-link" style={linkStyle}>WORK</a>
+        <a href="#experience" className="nav-link" style={linkStyle} onClick={(event) => handleNavClick(event, 'experience')}>EXPERIENCE</a>
+        <a href="#metrics" className="nav-link" style={linkStyle} onClick={(event) => handleNavClick(event, 'metrics')}>TECH STACK</a>
+        <a href="#work" className="nav-link" style={linkStyle} onClick={(event) => handleNavClick(event, 'work')}>WORK</a>
         <a href="/Resume_Krish_Trambadiya.pdf" className="nav-resume" download target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
       </div>
     </nav>

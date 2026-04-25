@@ -12,9 +12,8 @@ const HeroHeadline = () => {
   return (
     <div style={containerStyle}>
       <h1 style={headlineStyle}>
-        <div style={getStaggerStyle(loaded, 0)}>Building</div>
-        <div style={{ ...getStaggerStyle(loaded, 1), color: 'var(--accent-orange)' }}>Digital</div>
-        <div style={getStaggerStyle(loaded, 2)}>Experiences.</div>
+        <div style={{ ...getStaggerStyle(loaded, 0), color: 'var(--accent-orange)' }}>Krish Trambadiya</div>
+        <div style={getStaggerStyle(loaded, 1)}>Web Developer.</div>
       </h1>
       
       <p style={{...subtextStyle, ...getStaggerStyle(loaded, 3)}}>

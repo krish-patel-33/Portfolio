@@ -57,7 +57,7 @@ const Contact = () => {
   };
 
   return (
-    <section style={s_section}>
+    <section style={s_section} id="contact">
       {/* Background Ambience */}
       <div style={s_bgDots} />
       <div style={s_bgGlowLeft} />
@@ -87,7 +87,6 @@ const Contact = () => {
             </div>
             
             <motion.p 
-              id="contact"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay: 0.2 }}
               style={s_subtext}
             >

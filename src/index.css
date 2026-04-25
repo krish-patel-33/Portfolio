@@ -18,6 +18,10 @@
   --syntax-text: #D4D4D4;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
