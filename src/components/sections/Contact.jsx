@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, CheckCircle2, AlertCircle, FileDown, ArrowRight } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, AlertCircle, FileDown, ArrowRight } from 'lucide-react';
 
 const ContactCard = ({ icon: Icon, label, value, href, isEmail }) => {
   const [copied, setCopied] = useState(false);
@@ -44,16 +44,49 @@ const ContactCard = ({ icon: Icon, label, value, href, isEmail }) => {
 
 const Contact = () => {
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
-  const handleSubmit = (e) => {
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    setFormData((previous) => ({ ...previous, [id]: value }));
+    if (formState === 'error') setFormState('idle');
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState('sending');
-    
-    // TODO: Add EmailJS or Formspree API here
-    setTimeout(() => {
-      // Fake network success
+
+    const payload = new FormData();
+    payload.append('name', formData.name.trim());
+    payload.append('email', formData.email.trim());
+    payload.append('subject', formData.subject);
+    payload.append('message', formData.message.trim());
+    payload.append('_subject', `Portfolio Contact: ${formData.subject}`);
+    payload.append('_captcha', 'false');
+    payload.append('_template', 'table');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/krishpatel3300@gmail.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: payload,
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === false) {
+        throw new Error('Form submission failed');
+      }
+
       setFormState('success');
-    }, 1500);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch {
+      setFormState('error');
+    }
   };
 
   return (
@@ -154,17 +187,17 @@ const Contact = () => {
                   <h3 style={s_formTitle}>Send a Message</h3>
                   
                   <div className="input-group">
-                    <input type="text" id="name" placeholder=" " required disabled={formState==='sending'} />
+                    <input type="text" id="name" name="name" placeholder=" " required disabled={formState==='sending'} value={formData.name} onChange={handleInputChange} />
                     <label htmlFor="name">Your Name</label>
                   </div>
                   
                   <div className="input-group">
-                    <input type="email" id="email" placeholder=" " required disabled={formState==='sending'} />
+                    <input type="email" id="email" name="email" placeholder=" " required disabled={formState==='sending'} value={formData.email} onChange={handleInputChange} />
                     <label htmlFor="email">Your Email</label>
                   </div>
                   
                   <div className="input-group">
-                    <select id="subject" required disabled={formState==='sending'} defaultValue="">
+                    <select id="subject" name="subject" required disabled={formState==='sending'} value={formData.subject} onChange={handleInputChange}>
                       <option value="" disabled hidden></option>
                       <option value="job">Job Opportunity</option>
                       <option value="freelance">Freelance Project</option>
@@ -175,19 +208,23 @@ const Contact = () => {
                   </div>
                   
                   <div className="input-group">
-                    <textarea id="message" rows="5" placeholder=" " required disabled={formState==='sending'}></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder=" " required disabled={formState==='sending'} value={formData.message} onChange={handleInputChange}></textarea>
                     <label htmlFor="message">Your Message</label>
                   </div>
 
                   <motion.button 
-                    whileHover={formState === 'idle' ? { scale: 1.02, filter: 'brightness(1.1)' } : {}}
-                    whileTap={formState === 'idle' ? { scale: 0.97 } : {}}
+                    whileHover={formState !== 'sending' ? { scale: 1.02, filter: 'brightness(1.1)' } : {}}
+                    whileTap={formState !== 'sending' ? { scale: 0.97 } : {}}
                     className={`submit-btn ${formState}`}
-                    disabled={formState !== 'idle'}
+                    disabled={formState === 'sending'}
                   >
-                    {formState === 'idle' && <>Send Message <Send size={18} /></>}
+                    {formState !== 'sending' && <>Send Message <Send size={18} /></>}
                     {formState === 'sending' && <><span className="spinner"></span> Sending...</>}
                   </motion.button>
+
+                  <div style={s_formHint}>
+                    First-time setup note: FormSubmit may send an activation email before submissions start arriving.
+                  </div>
                   
                   {formState === 'error' && (
                     <div style={s_errorText}><AlertCircle size={14}/> Something went wrong. Try emailing directly.</div>
@@ -419,6 +456,13 @@ const s_errorText = {
   gap: '8px',
   marginTop: '16px',
   justifyContent: 'center',
+};
+
+const s_formHint = {
+  marginTop: '12px',
+  color: 'var(--text-muted)',
+  fontSize: '0.78rem',
+  lineHeight: '1.5',
 };
 
 const s_socialRow = {
