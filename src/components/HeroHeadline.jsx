@@ -22,10 +22,10 @@ const HeroHeadline = () => {
       </p>
 
       <div style={{...buttonsContainerStyle, ...getStaggerStyle(loaded, 4)}}>
-        <button style={primaryButtonStyle}>
-          Explore Work <ArrowRight size={18} />
-        </button>
-        <a href="https://github.com/krish-patel-33" target="_blank" rel="noreferrer" style={secondaryButtonStyle}>
+        <a href="#contact" className="hero-btn" style={primaryButtonStyle}>
+          Let's Connect <ArrowRight size={18} />
+        </a>
+        <a href="https://github.com/krish-patel-33" className="hero-btn-secondary" target="_blank" rel="noreferrer" style={secondaryButtonStyle}>
           View GitHub <Code size={18} />
         </a>
       </div>
@@ -48,10 +48,10 @@ const containerStyle = {
 };
 
 const headlineStyle = {
-  fontSize: 'clamp(4rem, 8vw, 7rem)', // Massive, commands the left half
+  fontSize: 'clamp(2.5rem, 5vw, 4rem)', // Reduced to allow top brand name to breathe
   fontWeight: 900,
   lineHeight: '1.05',
-  letterSpacing: '-2px',
+  letterSpacing: '-1px',
   display: 'flex',
   flexDirection: 'column',
 };
@@ -105,8 +105,20 @@ const secondaryButtonStyle = {
 
 // Add raw CSS for button hovers since style objects don't support pseudo-classes simply
 const css = `
-  button:hover { transform: translateY(-3px); }
-  button:active { transform: translateY(0); }
+  .hero-btn { text-decoration: none; }
+  .hero-btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 15px 40px rgba(232, 76, 30, 0.4) !important; 
+    filter: brightness(1.1); 
+  }
+  .hero-btn:active { transform: translateY(0); }
+  
+  .hero-btn-secondary:hover { 
+    transform: translateY(-3px); 
+    background: rgba(255, 255, 255, 0.05) !important; 
+    border-color: rgba(255, 255, 255, 0.2) !important; 
+  }
+  .hero-btn-secondary:active { transform: translateY(0); }
 `;
 document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 

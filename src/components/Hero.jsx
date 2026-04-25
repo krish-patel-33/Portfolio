@@ -136,7 +136,7 @@ const contentGridStyle = {
   width: '100%',
   height: '100%',
   alignItems: 'center',
-  paddingLeft: '40px', // Make room for decorative ticks
+  paddingLeft: '100px', // Increased to clear side ticks
 };
 
 export default Hero;

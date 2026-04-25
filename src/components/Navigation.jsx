@@ -13,11 +13,10 @@ const Navigation = () => {
         </h1>
       </div>
       <div style={linksContainerStyle}>
-        <a href="#work" style={linkStyle}>WORK</a>
-        <a href="#tech" style={linkStyle}>TECH STACK</a>
-        <a href="#experience" style={linkStyle}>EXPERIENCE</a>
-        <a href="#contact" style={linkStyle}>LET'S CONNECT</a>
-        <a href="/Resume_Krish_Trambadiya.pdf" download target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
+        <a href="#work" className="nav-link" style={linkStyle}>WORK</a>
+        <a href="#metrics" className="nav-link" style={linkStyle}>TECH STACK</a>
+        <a href="#experience" className="nav-link" style={linkStyle}>EXPERIENCE</a>
+        <a href="/Resume_Krish_Trambadiya.pdf" className="nav-resume" download target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
       </div>
     </nav>
   );
@@ -61,11 +60,11 @@ const dotStyle = {
 };
 
 const brandStyle = {
-  fontSize: '1.3rem',
-  fontWeight: 600,
-  letterSpacing: '0.15em',
+  fontSize: '1.8rem',
+  fontWeight: 900,
+  letterSpacing: '0.12em',
   color: '#FFFFFF',
-  textShadow: '0 0 20px rgba(0,0,0,0.8)',
+  textShadow: '0 4px 15px rgba(0,0,0,1), 0 1px 4px rgba(0,0,0,0.8), 0 0 30px rgba(232,76,30,0.3)',
 };
 
 const linksContainerStyle = {
@@ -98,14 +97,31 @@ const resumeButtonStyle = {
 };
 
 // Add keyframes inline or in css
-const pulseAnimation = `
+const navAnimations = `
 @keyframes pulse {
   0% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(0.8); }
   100% { opacity: 1; transform: scale(1); }
 }
+.nav-link {
+  transition: all 0.3s ease !important;
+  position: relative;
+  display: inline-block;
+}
+.nav-link:hover {
+  color: #E84C1E !important;
+  transform: translateY(-2px);
+}
+.nav-resume {
+  transition: all 0.3s ease !important;
+}
+.nav-resume:hover {
+  background: rgba(232, 76, 30, 0.1) !important;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(232, 76, 30, 0.3);
+}
 `;
 
-document.head.insertAdjacentHTML('beforeend', `<style>${pulseAnimation}</style>`);
+document.head.insertAdjacentHTML('beforeend', `<style>${navAnimations}</style>`);
 
 export default Navigation;

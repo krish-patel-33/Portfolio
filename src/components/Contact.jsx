@@ -57,7 +57,7 @@ const Contact = () => {
   };
 
   return (
-    <section style={s_section} id="contact">
+    <section style={s_section}>
       {/* Background Ambience */}
       <div style={s_bgDots} />
       <div style={s_bgGlowLeft} />
@@ -87,6 +87,7 @@ const Contact = () => {
             </div>
             
             <motion.p 
+              id="contact"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay: 0.2 }}
               style={s_subtext}
             >
@@ -292,6 +293,7 @@ const s_subtext = {
   lineHeight: '1.6',
   marginTop: '20px',
   maxWidth: '90%',
+  scrollMarginTop: '140px', // Leaves a comfortable gap from the top when anchor-linked
 };
 
 const s_cardsContainer = {
