@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import CursorManager from './components/CursorManager';
-import Metrics from './components/Metrics';
-import Experience from './components/Experience';
-import SelectedWork from './components/SelectedWork';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from 'react';
+import Navigation from './components/sections/Navigation';
+import Hero from './components/sections/Hero';
+import CursorManager from './components/effects/CursorManager';
+import Metrics from './components/sections/Metrics';
+import Experience from './components/sections/Experience';
+import SelectedWork from './components/sections/SelectedWork';
+import Contact from './components/sections/Contact';
+import Footer from './components/sections/Footer';
 
 function App() {
   return (

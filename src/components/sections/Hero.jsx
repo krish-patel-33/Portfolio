@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import HeroHeadline from './HeroHeadline';
-import Scene3D from './Scene3D';
+import HeroHeadline from '../scene/HeroHeadline';
+import Scene3D from '../scene/Scene3D';
 
 const Hero = () => {
   const containerRef = useRef(null);
