@@ -558,8 +558,8 @@ const styleOverrides = `
     position: absolute;
     backface-visibility: hidden;
     display: flex;
-    justifyContent: center;
-    alignItems: center;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
