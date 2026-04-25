@@ -13,9 +13,9 @@ const Navigation = () => {
         </h1>
       </div>
       <div style={linksContainerStyle}>
-        <a href="#work" className="nav-link" style={linkStyle}>WORK</a>
-        <a href="#metrics" className="nav-link" style={linkStyle}>TECH STACK</a>
         <a href="#experience" className="nav-link" style={linkStyle}>EXPERIENCE</a>
+        <a href="#metrics" className="nav-link" style={linkStyle}>TECH STACK</a>
+        <a href="#work" className="nav-link" style={linkStyle}>WORK</a>
         <a href="/Resume_Krish_Trambadiya.pdf" className="nav-resume" download target="_blank" rel="noreferrer" style={resumeButtonStyle}>RESUME</a>
       </div>
     </nav>
